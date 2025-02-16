@@ -1,0 +1,5 @@
+{
+  "logLevel": "ALL",
+  "logDirectory": ".Ecodrive_Client",
+  "maxLogSizeMB": 5
+}
