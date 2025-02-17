@@ -1,10 +1,15 @@
+import 'package:ecodrive_client/src/Services/LogSystem/LogSystem.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+Future<void> main() async {
+
+  await LogSystem().setupLogging();
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+
+
   const MyApp({super.key});
 
   // This widget is the root of your application.

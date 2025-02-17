@@ -1,5 +1,4 @@
 
-import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
@@ -88,11 +87,28 @@ class LogSystem implements Service{
     return path.join(directory.path, 'logs', 'error.log');
   }
 
-
-
+  void all(String message) {
+    Logger(this.ApplicationName).log(LogLevel.all as Level, message);
+  }
+  void error(String message) {
+    Logger(this.ApplicationName).log(LogLevel.error as Level, message);
+  }
   void log(String message, Level level) {
     Logger(this.ApplicationName).log(level, message);
   }
+  void debug(String message) {
+    Logger(this.ApplicationName).log(LogLevel.debug as Level, message);
+  }
+  void verbose(String message) {
+    Logger(this.ApplicationName).log(LogLevel.verbose as Level, message);
+  }
+  void warning(String message) {
+    Logger(this.ApplicationName).log(LogLevel.warning as Level, message);
+  }
+  void fatal(String message) {
+    Logger(this.ApplicationName).log(LogLevel.fatal as Level, message);
+  }
+
 
 //Load configuration
   Future<Map<String, dynamic>> loadConfig(String path) async {
@@ -103,6 +119,8 @@ class LogSystem implements Service{
     }
     throw Exception('Configuration file not found');
   }
+
+
 
 /**
  * Exemple utilisation
