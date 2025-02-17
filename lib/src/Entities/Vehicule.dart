@@ -1,7 +1,18 @@
-import 'dart:ffi';
+import 'dart:convert';
 
+import 'dart:ffi' as ffi;
+import 'dart:typed_data';
+import 'package:ffi/ffi.dart';
 
-class Vehicule{
+import 'package:json_annotation/json_annotation.dart';
+
+import 'Interface/entityInterface.dart';
+part 'Vehicule.g.dart';
+
+@JsonSerializable()
+
+class Vehicule  implements EntityInterface{
+
 
   int? id;
   String? brand;
@@ -11,8 +22,21 @@ class Vehicule{
   String? immatriculation;
   DateTime? firstImmatriculation;
   int? nbPlaces;
-  Array? Preferences; // ou liste??
-  String? Assurance;
 
+
+  List<String>?  preferences;
+  String? assurance;
+   Vehicule({this.id,this.brand,this.model,this.color,this.energy,this.immatriculation,this.firstImmatriculation,this.nbPlaces,this.preferences,this.assurance});
+
+
+//Serialization
+  factory Vehicule.fromJson(Map<String, dynamic> json) => _$VehiculeFromJson(json);
+
+
+
+
+
+//To Json
+  Map<String, dynamic> toJson() => _$VehiculeToJson(this);
 
 }

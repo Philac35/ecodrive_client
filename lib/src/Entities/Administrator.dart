@@ -1,11 +1,19 @@
 import 'dart:ffi';
 
+import '../Modules/Authentification/Entities/AuthUser.dart';
 import 'Abstract/Person.dart';
 import './User.dart';
 import './Employee.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+import 'Address.dart';
+import 'Interface/entityInterface.dart';
+import 'Photo.dart';
 
-class Administrator extends Person{
+part 'Administrator.g.dart';
+
+@JsonSerializable(explicitToJson: true)
+class Administrator extends Person  implements EntityInterface{
 
   Administrator({ super.id,required super.firstname,required super.lastname,super.age,super.gender, super.address, super.photo, required super.authUser, super.createdAt}):super();
 
@@ -14,6 +22,13 @@ class Administrator extends Person{
   pay(Float price){return price;}
   create(User user,Employee employee){}
 
+ //factory contructor for creating new Administrator instance from a map
+  //
+  factory Administrator.fromJson(Map<String, dynamic> json) => _$AdministratorFromJson(json);
 
+  //To Json
+  Map<String, dynamic> toJson() => _$AdministratorToJson(this);
 }
+
+
 

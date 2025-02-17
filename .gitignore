@@ -44,3 +44,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 /lib/src/Configuration/
+/lib/src/Entities/cf angle3 ORM.txt
