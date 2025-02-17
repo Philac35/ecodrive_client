@@ -12,7 +12,7 @@ class Vehicule{
   DateTime? firstImmatriculation;
   int? nbPlaces;
   Array? Preferences; // ou liste??
-  Uint8List? Assurance;
+  String? Assurance;
 
 
 }

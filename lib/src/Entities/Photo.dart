@@ -5,8 +5,8 @@ class Photo{
   String? title;
   String? uri;
   String? description;
-  Uint8List? photoFile;
 
-  Photo({this.id,required this.title, this.uri, this.description,this.photoFile});
+
+  Photo({this.id,required this.title, this.uri, this.description});
 
 }
