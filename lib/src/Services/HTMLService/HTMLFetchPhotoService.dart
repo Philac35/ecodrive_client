@@ -1,0 +1,39 @@
+import 'dart:math';
+
+import 'package:ecodrive_client/src/Services/HTMLService/Abstract/AbstractHTMLService.dart';
+
+class HTMLFetchPhotoService extends AbstractHTMLService{
+
+
+  HTMLFetchPhotoService(super.htmlRequest);
+
+  @override
+  Future fetch(htmlRequest) {
+    // TODO: implement fetch
+    throw UnimplementedError();
+  }
+
+  @override
+  int getId() {
+    var random = Random();
+    int randomNumber = random.nextInt(10 ^ 15);
+    return randomNumber;
+  }
+
+  @override
+  parseResult() {
+    // TODO: implement parseResult
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> send(htmlRequest) {
+    // TODO: implement send
+    throw UnimplementedError();
+  }
+
+
+
+
+}
+
