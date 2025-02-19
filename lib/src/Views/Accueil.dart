@@ -69,7 +69,8 @@ class Accueil extends StatelessWidget {
                       onTap: () {
                         AutoRouter.of(context).push(Accueil() as PageRouteInfo);
                       },
-                      child: Text('Accueil'),
+                      child: Text('Accueil',
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary), ),
                     ),
                   ),
                   SubmenuButton(
@@ -80,7 +81,8 @@ class Accueil extends StatelessWidget {
                       onTap: () {
                         AutoRouter.of(context).push(Voyages() as PageRouteInfo);
                       },
-                    child: Text('Voyages'),
+                    child: Text('Voyages',
+                      style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                   ),),
                   SubmenuButton(
                     menuChildren: [
@@ -90,7 +92,8 @@ class Accueil extends StatelessWidget {
                       onTap: () {
                         AutoRouter.of(context).push(Contact() as PageRouteInfo);
                       },
-                    child: Text('Contact'),
+                    child: Text('Contact',
+                      style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                   ),),
                   SubmenuButton(
                     menuChildren: [
@@ -100,7 +103,8 @@ class Accueil extends StatelessWidget {
                       onTap: () {
                         AutoRouter.of(context).push(Connexion() as PageRouteInfo);
                       },
-                    child: Text('Connexion'),
+                    child: Text('Connexion',
+                      style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                   ),),
                 ],
               ),
@@ -125,19 +129,49 @@ class Accueil extends StatelessWidget {
           ),
 
 // Sticky footer
+          // Sticky footer
           Positioned(
             bottom: 0,
             left: 0,
             right: 0,
             child: Container(
               height: 200,
-              color: Theme.of(context).colorScheme.tertiary,
-              child: Center(
-                child: Text('Footer Content',
-                    style: TextStyle(color: Colors.white)),
+              color: Theme.of(context).colorScheme.secondary,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          AutoRouter.of(context).pushNamed('/mentionslegales');
+                        },
+                        child: Text('Mentions légales',
+                          style: TextStyle(color: Theme.of(context).colorScheme.primary),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // Other footer content on the left
+                        Text('', style: TextStyle(color: Colors.white)),
+
+                        // Copyright text on the right
+                        Text(
+                          'Copyright 2025 @Ecodrive',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
+
+
         ],
       ),
     );

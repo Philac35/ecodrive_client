@@ -20,6 +20,7 @@ class Mentionslegales extends StatefulWidget {
 
 class _MentionslegalesWidgetState extends State<Mentionslegales> {
   String _stylecss = '';
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -28,15 +29,27 @@ class _MentionslegalesWidgetState extends State<Mentionslegales> {
   }
 
   Future<void> loadCSS() async {
-    _stylecss = await rootBundle.loadString('assets/styles.css');
-    setState(() {});
+    try {
+      _stylecss = await rootBundle.loadString('styles/styles.css');
+    } catch (e) {
+      print('Error loading CSS: $e');
+      // Handle the error appropriately
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
   }
-
 
   var mentionsHtml = MentionslegalesHTML().content();
 
   @override
   Widget build(BuildContext context) {
+
+    if (_isLoading) {
+      return Center(child: CircularProgressIndicator());
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -106,7 +119,8 @@ class _MentionslegalesWidgetState extends State<Mentionslegales> {
                       onTap: () {
                         AutoRouter.of(context).push(Accueil() as PageRouteInfo);
                       },
-                      child: Text('Accueil'),
+                      child: Text('Accueil',
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                     ),
                   ),
                   SubmenuButton(
@@ -117,7 +131,8 @@ class _MentionslegalesWidgetState extends State<Mentionslegales> {
                       onTap: () {
                         AutoRouter.of(context).push(Voyages() as PageRouteInfo);
                       },
-                      child: Text('Voyages'),
+                      child: Text('Voyages',
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                     ),
                   ),
                   SubmenuButton(
@@ -128,7 +143,8 @@ class _MentionslegalesWidgetState extends State<Mentionslegales> {
                       onTap: () {
                         AutoRouter.of(context).push(Contact() as PageRouteInfo);
                       },
-                      child: Text('Contact'),
+                      child: Text('Contact',
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                     ),
                   ),
                   SubmenuButton(
@@ -140,7 +156,8 @@ class _MentionslegalesWidgetState extends State<Mentionslegales> {
                         AutoRouter.of(context)
                             .push(Connexion() as PageRouteInfo);
                       },
-                      child: Text('Connexion'),
+                      child: Text('Connexion',
+                        style: TextStyle(color: Theme.of(context).colorScheme.primary),),
                     ),
                   ),
                 ],
@@ -166,7 +183,7 @@ class _MentionslegalesWidgetState extends State<Mentionslegales> {
                 child: Column(children: [
 
                   Html(data: mentionsHtml,
-                    style: CSSParser().parseCss(this._stylecss),
+                    style: CSSParser().parseDeclarations(this._stylecss),
                   )
                 ]),
               ),
@@ -174,22 +191,48 @@ class _MentionslegalesWidgetState extends State<Mentionslegales> {
           ),
 
 // Sticky footer
+          // Sticky footer
           Positioned(
             bottom: 0,
             left: 0,
             right: 0,
             child: Container(
               height: 200,
-              color: Theme
-                  .of(context)
-                  .colorScheme
-                  .tertiary,
-              child: Center(
-                child: Text('Footer Content',
-                    style: TextStyle(color: Colors.white)),
+              color: Theme.of(context).colorScheme.secondary,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Center(
+                      child: InkWell(
+                        onTap: () {
+                          AutoRouter.of(context).pushNamed('/mentionslegales');
+                        },
+                        child: Text('Mentions légales',
+                          style: TextStyle(color: Theme.of(context).colorScheme.primary),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // Other footer content on the left
+                        Text('', style: TextStyle(color: Colors.white)),
+
+                        // Copyright text on the right
+                        Text(
+                          'Copyright 2025 @Ecodrive',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
+
         ],
       ),
     );

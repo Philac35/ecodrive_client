@@ -1,6 +1,7 @@
 import 'package:ecodrive_client/src/Router/AppRouter.dart';
 import 'package:ecodrive_client/src/Router/AppRouter.gr.dart';
 import 'package:ecodrive_client/src/Services/LogSystem/LogSystem.dart';
+import 'package:ecodrive_client/src/Services/LogSystem/LogSystemBDD.dart';
 import 'package:ecodrive_client/src/Views/Graphisme/CustomColors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -11,9 +12,11 @@ Future<void> main() async {
   if (kIsWeb) {
     // Web-specific logging setup
     setPathUrlStrategy();
+    await LogSystemBDD().initialize();
+  } else {
+    await LogSystem().setupLogging();
   }
-  await LogSystem().setupLogging();
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -24,16 +27,13 @@ class MyApp extends StatelessWidget {
   );
   final _appRouter = AppRouter();
 
-
-   MyApp({super.key});
+  MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: _appRouter.config(),
-      routerDelegate: _appRouter.delegate(),
-      routeInformationParser: _appRouter.defaultRouteParser(),
 
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -53,8 +53,7 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
 
-
-         //Scheme Colors
+        //Scheme Colors
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         colorScheme: colorScheme,
         extensions: [
@@ -62,8 +61,7 @@ class MyApp extends StatelessWidget {
         ],
         useMaterial3: true,
       ),
-        //   home: const MyHomePage(title: 'Flutter Demo Home Page'), // We don't need it , we use the router
-
+      //   home: const MyHomePage(title: 'Flutter Demo Home Page'), // We don't need it , we use the router
     );
   }
 }
