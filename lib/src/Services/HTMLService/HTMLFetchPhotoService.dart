@@ -27,7 +27,7 @@ class HTMLFetchPhotoService extends AbstractHTMLService{
   }
 
   @override
-  Future<bool> send(htmlRequest) {
+  Future<bool> send({htmlRequest,String? method,dynamic data}) {
     // TODO: implement send
     throw UnimplementedError();
   }

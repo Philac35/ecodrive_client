@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
@@ -69,7 +70,7 @@ class HTMLService extends AbstractHTMLService {
   }
 
   @override
-  Future<bool> send(dynamic htmlRequest) async {
+  Future<bool> send({htmlRequest,String? method,dynamic data}) async {
     if (htmlRequest is! String) {
       print('Invalid request type: $htmlRequest');
       LogSystem().debug('Invalid request type: $htmlRequest');
@@ -77,6 +78,24 @@ class HTMLService extends AbstractHTMLService {
     }
 
     Uri? uri = Uri.tryParse(htmlRequest);
+    http.Response response;
+
+
+
+    //TODO to improve 19/02/2025
+    //HttpHeaders header=
+    switch(method){
+      case "GET" : (uri) async =>{response= await http.get(uri)};
+      case "POST":(uri) async =>{response= await http.post(uri, body:data)};
+      case "PUT":(uri) async =>{response= await http.put(uri)};
+      case "PATCH":(uri) async =>{response= await http.patch(uri)};
+      default: ;
+    }
+
+
+
+
+
     if (uri == null) {
       print('Invalid URI: $htmlRequest');
       LogSystem().debug('Invalid URI: $htmlRequest');

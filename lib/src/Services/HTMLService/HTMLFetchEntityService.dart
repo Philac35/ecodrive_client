@@ -80,7 +80,7 @@ class HTMLFetchEntityService<T>  extends AbstractHTMLService {
   }
 
   @override
-  Future<bool> send(dynamic htmlRequest) async {
+  Future<bool> send({htmlRequest,String? method,dynamic data}) async {
     if (htmlRequest is! String) {
       print('Invalid request type: $htmlRequest');
       LogSystem().debug('Invalid request type: $htmlRequest');
