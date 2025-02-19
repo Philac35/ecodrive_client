@@ -1,9 +1,17 @@
+import 'package:ecodrive_client/src/Router/AppRouter.dart';
+import 'package:ecodrive_client/src/Router/AppRouter.gr.dart';
 import 'package:ecodrive_client/src/Services/LogSystem/LogSystem.dart';
 import 'package:ecodrive_client/src/Views/Graphisme/CustomColors.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:ecodrive_client/src/Views/Accueil.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 Future<void> main() async {
-
+  if (kIsWeb) {
+    // Web-specific logging setup
+    setPathUrlStrategy();
+  }
   await LogSystem().setupLogging();
   runApp( MyApp());
 }
@@ -14,13 +22,19 @@ class MyApp extends StatelessWidget {
     secondary: Color(0xFFC3D0F0),
     tertiary: Color(0xFFE86A),
   );
+  final _appRouter = AppRouter();
+
 
    MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: _appRouter.config(),
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
+
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -48,7 +62,8 @@ class MyApp extends StatelessWidget {
         ],
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        //   home: const MyHomePage(title: 'Flutter Demo Home Page'), // We don't need it , we use the router
+
     );
   }
 }

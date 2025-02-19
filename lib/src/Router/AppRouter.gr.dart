@@ -13,7 +13,7 @@ import 'package:auto_route/auto_route.dart' as _i6;
 import 'package:ecodrive_client/src/Views/Accueil.dart' as _i1;
 import 'package:ecodrive_client/src/Views/Connexion.dart' as _i2;
 import 'package:ecodrive_client/src/Views/Contact.dart' as _i3;
-import 'package:ecodrive_client/src/Views/mentionslegales.dart' as _i4;
+import 'package:ecodrive_client/src/Views/Mentionslegales.dart' as _i4;
 import 'package:ecodrive_client/src/Views/Voyages.dart' as _i5;
 import 'package:flutter/material.dart' as _i7;
 
