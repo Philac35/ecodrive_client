@@ -9,23 +9,24 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i6;
+import 'package:auto_route/auto_route.dart' as _i7;
 import 'package:ecodrive_client/src/Views/Accueil.dart' as _i1;
 import 'package:ecodrive_client/src/Views/Connexion.dart' as _i2;
 import 'package:ecodrive_client/src/Views/Contact.dart' as _i3;
 import 'package:ecodrive_client/src/Views/Mentionslegales.dart' as _i4;
 import 'package:ecodrive_client/src/Views/Voyages.dart' as _i5;
-import 'package:flutter/material.dart' as _i7;
+import 'package:ecodrive_client/src/Views/VoyagesDetails.dart' as _i6;
+import 'package:flutter/cupertino.dart' as _i8;
 
 /// generated route for
 /// [_i1.Accueil]
-class Accueil extends _i6.PageRouteInfo<void> {
-  const Accueil({List<_i6.PageRouteInfo>? children})
+class Accueil extends _i7.PageRouteInfo<void> {
+  const Accueil({List<_i7.PageRouteInfo>? children})
     : super(Accueil.name, initialChildren: children);
 
   static const String name = 'Accueil';
 
-  static _i6.PageInfo page = _i6.PageInfo(
+  static _i7.PageInfo page = _i7.PageInfo(
     name,
     builder: (data) {
       return const _i1.Accueil();
@@ -35,13 +36,13 @@ class Accueil extends _i6.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.Connexion]
-class Connexion extends _i6.PageRouteInfo<void> {
-  const Connexion({List<_i6.PageRouteInfo>? children})
+class Connexion extends _i7.PageRouteInfo<void> {
+  const Connexion({List<_i7.PageRouteInfo>? children})
     : super(Connexion.name, initialChildren: children);
 
   static const String name = 'Connexion';
 
-  static _i6.PageInfo page = _i6.PageInfo(
+  static _i7.PageInfo page = _i7.PageInfo(
     name,
     builder: (data) {
       return const _i2.Connexion();
@@ -51,13 +52,13 @@ class Connexion extends _i6.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.Contact]
-class Contact extends _i6.PageRouteInfo<void> {
-  const Contact({List<_i6.PageRouteInfo>? children})
+class Contact extends _i7.PageRouteInfo<void> {
+  const Contact({List<_i7.PageRouteInfo>? children})
     : super(Contact.name, initialChildren: children);
 
   static const String name = 'Contact';
 
-  static _i6.PageInfo page = _i6.PageInfo(
+  static _i7.PageInfo page = _i7.PageInfo(
     name,
     builder: (data) {
       return const _i3.Contact();
@@ -67,8 +68,8 @@ class Contact extends _i6.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.Mentionslegales]
-class Mentionslegales extends _i6.PageRouteInfo<MentionslegalesArgs> {
-  Mentionslegales({_i7.Key? key, List<_i6.PageRouteInfo>? children})
+class Mentionslegales extends _i7.PageRouteInfo<MentionslegalesArgs> {
+  Mentionslegales({_i8.Key? key, List<_i7.PageRouteInfo>? children})
     : super(
         Mentionslegales.name,
         args: MentionslegalesArgs(key: key),
@@ -77,7 +78,7 @@ class Mentionslegales extends _i6.PageRouteInfo<MentionslegalesArgs> {
 
   static const String name = 'Mentionslegales';
 
-  static _i6.PageInfo page = _i6.PageInfo(
+  static _i7.PageInfo page = _i7.PageInfo(
     name,
     builder: (data) {
       final args = data.argsAs<MentionslegalesArgs>(
@@ -91,7 +92,7 @@ class Mentionslegales extends _i6.PageRouteInfo<MentionslegalesArgs> {
 class MentionslegalesArgs {
   const MentionslegalesArgs({this.key});
 
-  final _i7.Key? key;
+  final _i8.Key? key;
 
   @override
   String toString() {
@@ -101,16 +102,32 @@ class MentionslegalesArgs {
 
 /// generated route for
 /// [_i5.Voyages]
-class Voyages extends _i6.PageRouteInfo<void> {
-  const Voyages({List<_i6.PageRouteInfo>? children})
+class Voyages extends _i7.PageRouteInfo<void> {
+  const Voyages({List<_i7.PageRouteInfo>? children})
     : super(Voyages.name, initialChildren: children);
 
   static const String name = 'Voyages';
 
-  static _i6.PageInfo page = _i6.PageInfo(
+  static _i7.PageInfo page = _i7.PageInfo(
     name,
     builder: (data) {
       return const _i5.Voyages();
+    },
+  );
+}
+
+/// generated route for
+/// [_i6.VoyagesDetails]
+class VoyagesDetails extends _i7.PageRouteInfo<void> {
+  const VoyagesDetails({List<_i7.PageRouteInfo>? children})
+    : super(VoyagesDetails.name, initialChildren: children);
+
+  static const String name = 'VoyagesDetails';
+
+  static _i7.PageInfo page = _i7.PageInfo(
+    name,
+    builder: (data) {
+      return const _i6.VoyagesDetails();
     },
   );
 }
