@@ -8,7 +8,7 @@ abstract class AbstractHTMLService implements Service{
 
   AbstractHTMLService(this.htmlRequest);
 
-  Future<bool> send(htmlRequest);
+  Future<bool> send({htmlRequest,String? method,dynamic data});
   Future<dynamic> fetch(htmlRequest);
   dynamic parseResult();
 

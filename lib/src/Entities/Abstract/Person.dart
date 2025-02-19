@@ -16,4 +16,5 @@ abstract class Person{
   DateTime? createdAt;
 
   Person({this.id,required this.firstname,required this.lastname, this.age,this.gender, this.address,this.email,this.photo,required this.authUser,this.createdAt}){}
+
 }

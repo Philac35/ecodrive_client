@@ -18,5 +18,8 @@ class User extends Person  implements EntityInterface{
 //To Json
   Map<String, dynamic> toJson() => _$UserToJson(this);
 
+
+  @override
+  get authUser {return super.authUser; }
 }
 
