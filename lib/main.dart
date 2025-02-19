@@ -1,16 +1,21 @@
 import 'package:ecodrive_client/src/Services/LogSystem/LogSystem.dart';
+import 'package:ecodrive_client/src/Views/Graphisme/CustomColors.dart';
 import 'package:flutter/material.dart';
 
 Future<void> main() async {
 
   await LogSystem().setupLogging();
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  final ColorScheme colorScheme = ColorScheme.light(
+    primary: Color(0xFF0051C1),
+    secondary: Color(0xFFC3D0F0),
+    tertiary: Color(0xFFE86A),
+  );
 
-
-  const MyApp({super.key});
+   MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -33,7 +38,14 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+
+
+         //Scheme Colors
+        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: colorScheme,
+        extensions: [
+          CustomColors(quaternary: Color(0xFF123456)),
+        ],
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
